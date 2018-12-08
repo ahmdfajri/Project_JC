@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Layout, Drawer, Navigation, Content, Grid, Cell} from 'react-mdl';
 import {Link} from 'react-router-dom'
 
-class Collections extends Component {
+class Woman extends Component {
     render() {
       return (
         <div style={{width: '100%', margin: 'auto'}}>
@@ -31,4 +31,4 @@ class Collections extends Component {
     }
   }
   
-  export default Collections;
+  export default Woman;
