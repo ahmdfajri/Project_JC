@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
     "mdbreact": "^4.8.5-patch.1",
     "react": "^16.6.3",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.6.3",
     "react-mdl": "^1.11.0",
     "react-router-dom": "^4.3.1",

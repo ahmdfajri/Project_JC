@@ -1,50 +1,70 @@
 import React, { Component } from 'react';
-import { Layout, Header, Navigation, Textfield, Content } from 'react-mdl';
+import { Layout, Header, Navigation, Textfield, Content, Dialog, DialogTitle, DialogActions, Button, DialogContent } from 'react-mdl';
 import Main from './Main';
 import { Link } from 'react-router-dom';
 
 class Nav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.handleOpenDialog = this.handleOpenDialog.bind(this);
+        this.handleCloseDialog = this.handleCloseDialog.bind(this);
+    }
+
+    handleOpenDialog() {
+        this.setState({
+            openDialog: true
+        });
+    }
+
+    handleCloseDialog() {
+        this.setState({
+            openDialog: false
+        });
+    }
     render() {
         return (
-            <div>
-                <Link to="/"><img className="header_img" src="./img/image02.jpg" alt="" /></Link>
-                <div className="demo-big-content">
-                    <Layout>
-                        <Header className="header_color">
-                            <Navigation>
-                                <Link to="/New">NEW ARRIVAL</Link>
-                                <Link to="/Categories">CATEGORIES
-                                    <button id="demo-menu-lower-left"
-                                        class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">more_vert</i>
-                                    </button>
-                                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                                        for="demo-menu-lower-left">
-                                        <li class="mdl-menu__item">Woman</li>
-                                        <li class="mdl-menu__item">Kid</li>
-                                        <li class="mdl-menu__item">Baby</li>
-                                    </ul>
-                                </Link>
-                                <Link to="/Collections">COLLECTIONS</Link>
-                                <Link to="/Sale">SALE</Link>
-                                <Link to="/Gift">GIFT</Link>
-                                <Link to="/Store">OUR STORE</Link>
-                                <Textfield
-                                    onChange={() => { }}
-                                    label="Expandable Input"
-                                    expandable
-                                    expandableIcon="search"
-                                />
-                                <Link to="/Signin">Sign In</Link>
-                            </Navigation>
-                        </Header>
-                        <Content>
-                            <div className="page-content" />
-                            <Main />
-                        </Content>
-                    </Layout>
-                </div>
+            <div className="header_color">
+                <Link to="/"><img className="header_img" src="./img/image.png" alt="" /></Link>
+                <h1 className="tea_line">TEA LINE</h1>
+                <Layout>
+                    <Header className="header_color">
+                        <Navigation>
+                            <Link to="/New">SHOP</Link>
+                            <Link to="/Categories">BLOG</Link>
+                            <Link to="/Collections">COLLECTIONS</Link>
+                            <Textfield
+                                onChange={() => { }}
+                                label="Expandable Input"
+                                expandable
+                                expandableIcon="search"
+                            />
+                            <div>
+                                <Button colored onClick={this.handleOpenDialog} raised ripple>Sign In</Button>
+                                <Dialog open={this.state.openDialog}>
+                                    <DialogTitle>LOGIN</DialogTitle>
+                                    <DialogContent>
+                                        <p>Please enter your email and password</p>
+                                        <input placeholder="email"></input>
+                                        <input placeholder="password"></input>
+                                        <p>Don't have account? Please Signup</p>
+                                        <Button>Signup</Button>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button type='button'>Agree</Button>
+                                        <Button type='button' onClick={this.handleCloseDialog}>Disagree</Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
+                        </Navigation>
+                    </Header>
+                    <Content>
+                        <div className="page-content" />
+                        <Main />
+                    </Content>
+                </Layout>
             </div>
+
 
         );
     }
